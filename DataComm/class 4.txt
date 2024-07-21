@@ -1,0 +1,2 @@
+DHCP-- dynamic host control protocol
+to assign the ip add dynamically to all end point.

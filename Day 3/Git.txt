@@ -1,0 +1,92 @@
+
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   sw.txt
+
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git commit -m "hello"
+[master (root-commit) 4eea7d4] hello
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 sw.txt
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git branch
+* master
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git log
+commit 4eea7d4aed9398c5f1e6d0d56c731b1f008a8f5e (HEAD -> master)
+Author: Shubham <shubhamvishwakarma732@gmail.com>
+Date:   Mon Jun 10 08:34:20 2024 -0700
+
+    hello
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git checkout master
+Already on 'master'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git branch dev
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git branch
+  dev
+* master
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git checkout dev
+Switched to branch 'dev'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (dev)
+$ git checkout master
+Switched to branch 'master'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git checkout -b shubh
+Switched to a new branch 'shubh'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (shubh)
+$ git branch
+  dev
+  master
+* shubh
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (shubh)
+$ git checkout master
+Switched to branch 'master'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git checkout shubh
+Switched to branch 'shubh'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (shubh)
+$ touch new.txt
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (shubh)
+$ git checkout master
+Switched to branch 'master'
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git merge shubh
+Already up to date.
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git log
+commit 4eea7d4aed9398c5f1e6d0d56c731b1f008a8f5e (HEAD -> master, shubh, dev)
+Author: Shubham <shubhamvishwakarma732@gmail.com>
+Date:   Mon Jun 10 08:34:20 2024 -0700
+
+    hello
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$ git merge shubh
+Already up to date.
+
+Shubham@DESKTOP-0MPUC8R MINGW64 ~/shubham (master)
+$

@@ -1,0 +1,29 @@
+Advantages of Spiral model
+1. One of the key advantages of the Spiral Model is its focus on risk management. 
+2. The Spiral Model is highly flexible and allows for iterative development
+
+Disadvantages of spiral model
+1. It is more complex 
+2. it is time consuming
+3. with the iteration increase the cost is also increase.
+4. it is not good for small project.
+
+Advantages of V model--
+1. It is use for small project.
+2. Simple and easy to understand and use.
+3. it focus on verification and validation activities early in the lyfe cycle thats why
+   it create error free and good quality product.
+
+Disadvantages of V model--
+1. High risk and uncertainty.
+2. It is not good for complex and oops project.
+3. it is not suitable for projects where requirements are not clear and risk of changing.
+4. It is time Consuming.
+
+Agile--
+The agile model refers to the iterative approach to delivering a software product. This means that instead of delivering a large project only when all parts are complete, 
+	a team breaks down a large project into smaller parts, and delivers these completed smaller parts in regular cycles. For example, using the agile model a developer delivers multiple releases of a product 
+	and each release could add a single feature, such as drop-down menus, checkboxes, or multiple-choice buttons. The final release would contain all features.
+
+The agile model is typically used in software development, where, as technology rapidly changes, extensive collaboration is needed and 
+	continuous delivery and iterative change are expected. The agile model focuses on implementing small changes over a short cycle.

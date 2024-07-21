@@ -1,0 +1,133 @@
+[9:33 AM] Praveen
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+[9:33 AM] Praveen
+  502  docker images 
+
+  503  docker pull grafana/grafana:main
+
+  504  docker images 
+
+  505  clear
+
+  506  docker run grafana/grafana:main
+
+  507  docker ps -a
+
+  508  docker run -d grafana/grafana:main
+
+  509  docker ps -a
+
+  510  docker run -d --name=wipro grafana/grafana:main
+
+  511  docker ps -a
+
+  512  docker run -d --name=wipro -p 3000:3000 grafana/grafana:main
+
+  513  docker run -d --name=grafana -p 3000:3000 grafana/grafana:main
+
+  514  docker ps -a
+
+  515  curl localhost:3000
+
+
+
+602  docker commit wipro wiprobatch-test:1.1
+  603  docker images
+  604  docker same grafana/grafana:main > test.tgz
+  605  docker save grafana/grafana:main > test.tgz
+  606  ls
+  607  docker import test.tgz 
+  608  docker images
+  609  docker load test.tgz
+  610  docker ps
+  611  docker ps -a
+  612  docker logs abd5bac54775
+  613  docker inspect abd5bac54775
+  614  docker events abd5bac54775
+  615  docker events 
+  616  docker ps -a
+  617  docker port grafana
+  618  ps -ef 
+  619  docker top grafana
+  620  docker stats grafana
+  621  history
+  622  docker stats grafana
+  623  top
+  624  clear
+  625  ls
+  626  docker diff grafana
+  627  docker exec -it grafan bash
+  628  docker exec -it grafana bash
+  629  docker diff grafana
+  630  docker images 
+  631  docker image ls
+  632  docker history grafana/grafana:main
+
+
+
+[12:49 PM] Praveen
+🠶# Step 1: Create a Docker volume
+🠶docker volume create my_volume
+🠶
+🠶# Step 2: Run a container with the volume
+🠶docker run -d --name my_container -v my_volume:/data ubuntu sleep infinity
+🠶
+🠶# Step 3: Write data to the volume
+🠶docker exec -it my_container bash
+🠶echo "Hello, Docker Volume!" > /data/hello.txt
+🠶exit
+🠶
+🠶# Step 4: Kill the container
+🠶docker rm -f my_container
+🠶
+🠶# Step 5: Run another container with the same volume
+🠶docker run -d --name new_container -v my_volume:/data ubuntu sleep infinity
+🠶
+🠶# Step 6: Show the existing data
+🠶docker exec -it new_container bash
+🠶cat /data/hello.txt
+
+
+
+
+FROM ubuntu 
+RUN apt update 
+RUN apt install –y apache2 
+RUN apt install –y apache2-utils 
+RUN apt clean 
+EXPOSE 80
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example</title>
+</head>
+<body>
+<p>This is an example of a simple HTML page with one paragraph.</p>
+</body>
+</html>
+
+
+munipravy@cloudshell:~/apache (focus-poet-305920)$ cat index.html 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example</title>
+</head>
+<body>
+<p>This is an example of a simple HTML page with one paragraph.</p>
+</body>
+</html>
+munipravy@cloudshell:~/apache (focus-poet-305920)$ cat Dockerfile 
+FROM quay.io/centos/centos:stream9
+ 
+RUN dnf -y install httpd
+#RUN echo "Dockerfile Test on Aapche httpd" > /var/www/html/index.html
+ 
+COPY index.html /var/www/html/index.html
+ 
+EXPOSE 80
+CMD ["-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/httpd"]

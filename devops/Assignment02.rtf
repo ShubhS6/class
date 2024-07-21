@@ -1,0 +1,266 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset1 Segoe UI Symbol;}{\f1\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl240\slmult1\f0\fs22\lang9\u10063?\f1 Create pods, deployments, services.\par
+
+\pard\sa200\sl240\slmult1 Answere-->\par
+\tab 1. Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.It is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.\par
+
+\pard\sl240\slmult1 Creating the pods-->\par
+\tab\tab apiVersion: v1\par
+\tab\tab kind: Pod\par
+\tab\tab metadata:\par
+  \tab\tab\tab name: nginx\par
+\tab\tab spec:\par
+  \tab\tab\tab containers:\par
+  \tab\tab\tab - name: nginx\par
+    \tab\tab\tab\tab image: nginx:1.14.2\par
+    \tab\tab\tab\tab ports:\par
+    \tab\tab\tab\tab - containerPort: 80\par
+\par
+To create the Pod shown above, run the following command-->\par
+\tab kubectl apply -f {{\field{\*\fldinst{HYPERLINK https://k8s.io/examples/pods/simple-pod.yaml }}{\fldrslt{https://k8s.io/examples/pods/simple-pod.yaml\ul0\cf0}}}}\f1\fs22\par
+\par
+ 2. A Deployment provides declarative updates for Pods and ReplicaSets.Provide a YAML example of a deployment configuration\par
+\par
+Yaml Example-->\par
+\tab apiVersion: apps/v1\par
+\tab kind: Deployment\par
+\tab metadata:\par
+  \tab\tab name: nginx-deployment\par
+\tab spec:\par
+  \tab\tab replicas: 3\par
+  \tab\tab selector:\par
+    \tab\tab\tab matchLabels:\par
+      \tab\tab\tab\tab app: nginx\par
+  \tab\tab template:\par
+    \tab\tab\tab metadata:\par
+      \tab\tab\tab\tab labels:\par
+        \tab\tab\tab\tab\tab app: nginx\par
+    \tab\tab\tab spec:\par
+      \tab\tab\tab\tab containers:\par
+        \tab\tab\tab\tab\tab - name: nginx-container\par
+          \tab\tab\tab\tab\tab image: nginx:latest\par
+\par
+use this command-- kubectl apply -f nginx-deployment.yaml\par
+\par
+3. In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.\par
+\tab\tab apiVersion: v1\par
+\tab\tab kind: Service\par
+\tab\tab metadata:\par
+  \tab\tab\tab name: nginx-service\par
+\tab\tab spec:\par
+  \tab\tab\tab selector:\par
+    \tab\tab\tab\tab app: nginx\par
+  \tab\tab\tab ports:\par
+    \tab\tab\tab\tab - protocol: TCP\par
+      \tab\tab\tab\tab port: 80\par
+\tab\tab\tab\tab  targetPort: 80\par
+\par
+use this command-->kubectl apply -f nginx-service.yaml\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+2    Deploy pods on specific node using concept of taint & tolerance, node selector & node affinity\par
+\par
+\tab Taint allow a node to repel a set of pods.Taints and tolerations work together to ensure that pods are not scheduled onto inappropriate nodes.\par
+\tab add tolarance kubectl taint nodes node1 key1=value1:NoSchedule\par
+\tab tolerations:\par
+\tab - key: "key1"\par
+  \tab\tab operator: "Equal"\par
+  \tab\tab value: "value1"\par
+  \tab\tab effect: "NoSchedule"\par
+\par
+\tab Node selector is a straightforward way to constrain which nodes your pod is eligible to be scheduled on based on labels.\par
+\tab spec:\par
+  \tab\tab nodeSelector:\par
+    \tab\tab\tab <label-key>: <label-value>\par
+\par
+\tab Node affinity provides more advanced expressions to control pod placement based on node properties such as labels.\par
+\par
+\tab Here's a complete example that combines taints and tolerations, node selector, and node affinity\par
+\tab\tab apiVersion: v1\par
+kind: Pod\par
+metadata:\par
+  name: mypod\par
+spec:\par
+  containers:\par
+  - name: myapp\par
+    image: myapp-image\par
+  nodeSelector:\par
+    disktype: ssd\par
+  affinity:\par
+    nodeAffinity:\par
+      requiredDuringSchedulingIgnoredDuringExecution:\par
+        nodeSelectorTerms:\par
+        - matchExpressions:\par
+          - key: machine-type\par
+            operator: In\par
+            values:\par
+            - large\par
+  tolerations:\par
+  - key: "specialnode"\par
+    operator: "Equal"\par
+    value: "true"\par
+    effect: "NoSchedule"\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+3     Explore node affinity, node selector, anti affinity\par
+Answere-->\par
+\tab node selector-->\par
+\tab Node selector is the simplest form of influencing pod scheduling based on node \tab labels. You specify a set of key-value pairs in the pod's specification (\tab spec.nodeSelector) that the node must have in order for the pod to be scheduled on \tab\tab it.\par
+\tab spec:\par
+  \tab\tab containers:\par
+    \tab\tab\tab - name: nginx\par
+      \tab\tab\tab image: nginx\par
+\tab\tab   nodeSelector:\par
+    \tab\tab\tab disktype: ssd\par
+\tab This YAML instructs Kubernetes to schedule the pod only on nodes that have the label disktype=ssd.\par
+\par
+\tab\par
+\tab Node Affinity-->\par
+\tab Node affinity allows for more complex rules than node selector. It specifies rules that \tab govern how pods are scheduled onto nodes based on the labels of the node.\par
+spec:\par
+  containers:\par
+    - name: nginx\par
+      image: nginx\par
+  affinity:\par
+    nodeAffinity:\par
+      requiredDuringSchedulingIgnoredDuringExecution:\par
+        nodeSelectorTerms:\par
+          - matchExpressions:\par
+              - key: disktype\par
+                operator: In\par
+                values:\par
+                  - ssd\par
+\par
+This YAML specifies that the pod should be scheduled on nodes that have the label disktype=ssd.\par
+\tab\par
+\tab Node anti-affinity -->\par
+\tab specifies rules that prevent pods from being scheduled onto nodes that match certain \tab conditions, such as node labels or topology constraints.\par
+spec:\par
+  containers:\par
+    - name: nginx\par
+      image: nginx\par
+  affinity:\par
+    nodeAntiAffinity:\par
+      requiredDuringSchedulingIgnoredDuringExecution:\par
+        nodeSelectorTerms:\par
+          - matchExpressions:\par
+              - key: node-role.kubernetes.io/master\par
+                operator: Exists\par
+\par
+This YAML specifies that the pod should avoid nodes that have the label node-role.kubernetes.io/master\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+4..  Deploy mysql pod and store the data in a persistent volume. Delete the pod and attach the volume to a new pod. Check if the data is available to the new pod.\par
+\par
+\tab create yaml and apply pvc ---- \par
+\tab\tab kubectl apply -f mysql-pvc.yaml\par
+\par
+\tab deploy sql pod---\par
+\tab\tab kubectl apply -f mysql-deployment.yaml\par
+\tab\par
+\tab Access the MySQL Pod and insert some data:\par
+\tab\tab kubectl exec -it <mysql-pod-name> -- mysql -u root -p\par
+\par
+\tab delete my sql pod---\par
+\tab\tab kubectl delete pod <mysql-pod-name>\par
+\tab\par
+\tab Attach the PVC to a New Pod--\par
+\tab\tab kubectl apply -f mysql-new-pod.yaml\par
+\par
+\tab Access the new MySQL Pod and check if the data inserted earlier is still there\par
+\tab\tab kubectl exec -it mysql-new -- mysql -u root -p\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+5. \lang1033  \lang9 Deploy Wordpress to kubernetes and expose the service to outside world using nodeport, loadbalancerservices.\par
+\par
+Answere-->\par
+\tab WordPress requires storage for storing uploads and other data. Create a PVC YAML\par
+apiVersion: v1\par
+kind: PersistentVolumeClaim\par
+metadata:\par
+  name: wordpress-pvc\par
+spec:\par
+  accessModes:\par
+    - ReadWriteOnce\par
+  resources:\par
+    requests:\par
+      storage: 1Gi  \par
+kubectl apply -f wordpress-pvc.yaml\par
+\par
+\tab Apply the mysql Deployment-- kubectl apply -f mysql-deployment.yaml\par
+\par
+\tab Apply the WordPress Deployment:-- kubectl apply -f wordpress-deployment.yaml\par
+\tab\par
+\tab Create a NodePort Service YAML (wordpress-nodeport.yaml):\par
+\tab kubectl apply -f wordpress-nodeport.yaml\par
+\par
+\tab Create a LoadBalancer Service YAML (wordpress-lb.yaml):\par
+apiVersion: v1\par
+kind: Service\par
+metadata:\par
+  name: wordpress-lb\par
+spec:\par
+  type: LoadBalancer\par
+  ports:\par
+    - port: 80\par
+      targetPort: 80\par
+  selector:\par
+    app: wordpress\par
+\tab\par
+\tab Apply the LoadBalancer Service: kubectl apply -f wordpress-lb.yaml\par
+\tab\par
+\tab The LoadBalancer Service will provision an external IP (on supported cloud providers) \tab to access WordPress.\par
+\tab For NodePort: Access WordPress using any node's IP address and the NodePort\par
+\tab For LoadBalancer: Access WordPress using the external IP provided by your cloud \tab\tab provider.\par
+\par
+\par
+\par
+\par
+\par
+\par
+6.. Define resource limit for containers in the wordpress deployment.\par
+Answere---> \par
+\tab When deploying WordPress  on Kubernetes, it's essential to define resource limits for containers to ensure efficient resource utilization and prevent resource contention. Resource limits specify the maximum amount of CPU and memory that a container can use.\par
+it specifies the maximum amount of CPU and memory that the container can use.\par
+\par
+\par
+\par
+\par
+\par
+\par
+7.. Define Readiness & liveness probes for the wordpress container.\par
+Answere-->\par
+\tab Readiness Probe--->\par
+\tab\tab The readiness probe determines when a container is ready to start accepting \tab traffic. If a readiness probe fails, the Kubernetes Service removes the Pod's IP \tab address from its set of endpoints, meaning it won't receive traffic until it passes the \tab readiness probe again.\par
+\par
+\tab Liveness Probe--->\par
+\tab\tab The liveness probe checks if the container is still alive and responsive. If a \tab liveness probe fails, Kubernetes restarts the container to restore it to a healthy state.\par
+}
+ 

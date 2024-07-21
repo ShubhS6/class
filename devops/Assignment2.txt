@@ -1,0 +1,7 @@
+❏Create pods, deployments, services.
+❏Deploy pods on specific node using concept of taint & tolerance, node selector & node affinity
+❏Explore node affinity, node selector, anti affinity
+❏Deploy mysql pod and store the data in a persistent volume. Delete the pod and attach the volume to a new pod. Check if the data is available to the new pod.
+❏Deploy Wordpress to kubernetes and expose the service to outside world using nodeport, loadbalancerservices.
+❏Define resource limit for containers in the wordpress deployment.
+❏Define Readiness & liveness probes for the wordpress container.

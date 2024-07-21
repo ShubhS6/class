@@ -1,0 +1,41 @@
+1.Create Nginx dockerfile
+	1.Set the base image to Ubuntu  
+	2.Install Nginx
+	3.Install necessary tools: vim wget curl net-tools
+	4.Remove the default Nginx configuration file
+	5.Copy a configuration file from the current directory
+	6.Expose ports (80)
+	7.Set the default command to execute when creating a new container
+
+
+
+2.Build the docker image and push it to dockerhub.
+
+
+
+
+3.What is the difference between 'RUN', 'CMD', & 'ENTRYPOINT' in dockerfile?
+
+
+
+4.How to remove container automatically after it exits?
+
+
+5.How to check which containers are connected to a network?
+
+
+
+6.How to check container ip address?
+
+7.How to create custom bridge network?
+
+
+
+8.How to associate a container with a network?
+
+
+
+9.How to get persistent storage?
+
+
+munipravy045@gmail.com

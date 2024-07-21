@@ -1,0 +1,110 @@
+                              
+                               --My Project will be old book selling website--
+
+
+1. where people come and list their book of any kind in low price. And the people who want to buy can buy the book according to their budget.
+2. In the display it would be the Newly add book which is high in demand.
+3. People come and create their account to list their items.
+4. And for those who want to buy the product can also create the account.
+5. through the account we can track which types of book the particular user like.
+6. And according to their choice we use AI to reflect the books of users choice which newly added in our list.
+7. And user can buy the product from any thing like cod,debit card,credit card,upi etc.
+8. And In the wesite i create the Category where people can find different type of the book.
+9. And we can rent the book also.
+11. And we also add the ebooks.
+12. And it can run in any devices like phone, and computer etc..
+
+
+Domain--
+Ecommerce-- Amazone,Flipkart,meesho
+Insurance Application
+Financial Application
+Job Search
+Social Media
+
+Requirement--
+functional requirement--What our application do.
+Non functional requirement--
+
+Requirement means understanding the needs and identify the problem.
+
+1. User Authentication-- 
+		Users should be able to register, log in, and manage their accounts securely.
+2. Search options-- 
+		Users should be able to search for books based on various criteria such as title, author, genre, or publication name.
+3. Books Categories-- 
+		The website should allow users to browse books by categories.
+4. Books Listing-- 
+		Sellers should be able to list their books for sale, including details like title, author, condition, price, and images.
+5. Shopping Cart--
+		Users should be able to add books to their shopping cart for purchase.
+6. Checkout --
+		The website should facilitate a smooth payment and delivery.
+7. User Reviews-- 
+		Users should be able to leave reviews and ratings for books they have purchased.
+8. Security--
+		Users data and password should be secure.
+
+SDLC
+Designing
+Development
+Testing
+Deployment
+maintanance
+
+
+Advantages of waterfall model--
+The Waterfall Model follows a sequential, linear approach to development, making it easy to understand and implement.
+The Waterfall Model is most effective when requirements are well-understood 
+The Waterfall Model includes a dedicated testing phase, allowing for thorough testing and quality assurance before the final product is delivered to the customer. 
+
+Disadvantages--
+One of the main drawbacks of the Waterfall Model is its lack of flexibility. 
+Requirements are gathered at the beginning of the project .
+The Waterfall Model may not be suitable for projects that are complex or likely to evolve over time
+
+
+Advantages of Spiral model
+One of the key advantages of the Spiral Model is its focus on risk management. 
+The Spiral Model is highly flexible and allows for iterative development
+
+Disadvantages of spiral model
+It is more complex 
+it is time consuming
+with the iteration increase the cost is also increase.
+it is not good for small project.
+
+
+
+Agile--
+gile is a methodology used in project management, particularly in software development, for iterative and incremental development. 
+It emphasizes flexibility, collaboration, customer feedback, and continuous improvement. 
+The Agile approach prioritizes delivering working software in small, manageable increments rather than delivering a large product all at once.
+
+Scrum--
+Scrum is the subset of Agile.
+it is of three types..
+
+benifit of agile--
+1. Customer--more responsive to request
+	     high value features.
+2. Development teams--
+		enjoy development work
+		worked is valued and used
+3. Scrummaster--
+		Planning
+		tracking in daily meeting
+		awareness of project status
+4. Vendor--
+		Focused development.
+		increased effficiency.
+5. Product Owner--
+		Development work aligns with customer needs.
+		MAXIMUM delivery of value.
+
+Scrum Process--
+1. Sprint Backlog
+2. Product backlog
+3. Daily Scrum meeting
+Repeat in 30 days.
+
