@@ -1,0 +1,324 @@
+[2:45 PM] Praveen Kumar  G S
+<dependencies>
+ 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>5.3.37</version>
+		</dependency>
+ 
+		<!--
+		https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.3.37</version>
+		</dependency>
+ 
+	</dependencies>
+Maven Repository: org.springframework » spring-core
+[2:47 PM] Praveen Kumar  G S
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+	<!-- bean definitions here -->
+	
+	<bean id="person" class="com.examples.spring.beans.Person">
+		<property name="pid" value="456" />
+      	<property name="name" value="Krishna" />
+      	<property name="address" ref="addr" />
+      
+      </bean>
+      <!--
+      <bean id="addr" class="com.examples.spring.beans.Address">
+ 
+		<constructor-arg value="123" />
+		<constructor-arg value="Koramangala" />
+		<constructor-arg value="Bangalore" />
+		
+	</bean>
+	
+	-->
+     
+	<bean id="addr" class="com.examples.spring.beans.Address" scope="prototype" init-method="init" destroy-method="teardown">
+ 
+		<property name="dno" value="123" />
+		<property name="street" value="Koramangala" />
+		<property name="city" value="Bangalore" />
+	</bean>
+	
+	
+	<bean id="emp" class="com.examples.spring.beans.Employee" scope="singleton" >
+		<property name="empid" value="9001" />
+		<property name="name" value="Raj" />
+		<property name="dept" value="IT" />
+	
+	</bean>
+ 
+</beans>
+[2:47 PM] Praveen Kumar  G S
+public class Address {
+	
+	int dno;
+	String street;
+	String city;
+	
+	public Address() {
+		super();
+		System.out.println("Inside the default constructor");
+	}
+	
+	public Address(int dno, String street, String city) {
+		super();
+		this.dno = dno;
+		this.street = street;
+		this.city = city;
+	}
+ 
+	public int getDno() {
+		return dno;
+	}
+ 
+	public void setDno(int dno) {
+		this.dno = dno;
+	}
+ 
+	public String getStreet() {
+		return street;
+	}
+ 
+	public void setStreet(String street) {
+		this.street = street;
+	}
+ 
+	public String getCity() {
+		return city;
+	}
+ 
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public void init() {
+		System.out.println("Inside the init method");
+	}
+ 
+	public void tearDown() {
+		System.out.println("Inside the destroy method");
+	}
+	@Override
+	public String toString() {
+		return "Address [dno=" + dno + ", street=" + street + ", city=" + city + "]";
+	}
+	
+	
+ 
+}
+ 
+[2:48 PM] Praveen Kumar  G S
+public class Department {
+	
+	int deptid;
+	
+	String deptname;
+	
+	public Department() {
+		super();
+	}
+ 
+	public Department(int deptid, String deptname) {
+		super();
+		this.deptid = deptid;
+		this.deptname = deptname;
+	}
+ 
+	public int getDeptid() {
+		return deptid;
+	}
+ 
+	public void setDeptid(int deptid) {
+		this.deptid = deptid;
+	}
+ 
+	public String getDeptname() {
+		return deptname;
+	}
+ 
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
+	}
+ 
+	@Override
+	public String toString() {
+		return "Department [deptid=" + deptid + ", deptname=" + deptname + "]";
+	}
+	
+}
+ 
+[2:48 PM] Praveen Kumar  G S
+public class Employee {
+	
+	int empid;
+	String name;
+	String dept;
+ 
+	public Employee() {
+		super();
+	}
+ 
+	public Employee(int empid, String name, String dept) {
+		super();
+		this.empid = empid;
+		this.name = name;
+		this.dept = dept;
+	}
+ 
+	public int getEmpid() {
+		return empid;
+	}
+ 
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+ 
+	public String getName() {
+		return name;
+	}
+ 
+	public void setName(String name) {
+		this.name = name;
+	}
+ 
+	@Override
+	public String toString() {
+		return "Employee [empid=" + empid + ", name=" + name + ", dept=" + dept + "]";
+	}
+ 
+	public String getDept() {
+		return dept;
+	}
+ 
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	
+ 
+}
+ 
+[2:48 PM] Praveen Kumar  G S
+public class Person {
+	
+	String pid;
+	String name;
+	Address address;
+	public Person() {
+		
+	}
+ 
+	public Person(String pid, String name, Address address) {
+		super();
+		this.pid = pid;
+		this.name = name;
+		this.address = address;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+ 
+	@Override
+	public String toString() {
+		return "Person [pid=" + pid + ", name=" + name + ", address=" + address + "]";
+	}
+	
+ 
+}
+ 
+[2:48 PM] Praveen Kumar  G S
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+ 
+public class TestSpring {
+ 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ApplicationContext context =
+				new ClassPathXmlApplicationContext("beans.xml");
+		
+		Address adr1 =(Address)context.getBean("addr");
+		System.out.println(adr1.hashCode());
+		
+		Address adr2 =(Address)context.getBean("addr");
+		System.out.println(adr2.hashCode());
+		
+		Employee e = (Employee)context.getBean("emp");
+		System.out.println(e);
+		
+		Person p = (Person)context.getBean("person");
+		System.out.println(p);
+		
+	}
+ 
+}
+ 
+[2:49 PM] Praveen Kumar  G S
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+	<!-- bean definitions here -->
+	
+	<bean id="person" class="com.examples.spring.beans.Person">
+		<property name="pid" value="456" />
+      	<property name="name" value="Krishna" />
+      	<property name="address" ref="addr" />
+      
+      </bean>
+      <!--
+      <bean id="addr" class="com.examples.spring.beans.Address">
+ 
+		<constructor-arg value="123" />
+		<constructor-arg value="Koramangala" />
+		<constructor-arg value="Bangalore" />
+		
+	</bean>
+	
+	-->
+     
+	<bean id="addr" class="com.examples.spring.beans.Address" scope="prototype" init-method="init" destroy-method="teardown">
+ 
+		<property name="dno" value="123" />
+		<property name="street" value="Koramangala" />
+		<property name="city" value="Bangalore" />
+	</bean>
+	
+	
+	<bean id="emp" class="com.examples.spring.beans.Employee" scope="singleton" >
+		<property name="empid" value="9001" />
+		<property name="name" value="Raj" />
+		<property name="dept" value="IT" />
+	
+	</bean>
+ 
+</beans>

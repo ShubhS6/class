@@ -1,0 +1,338 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+.header
+{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(231, 215, 215);
+    box-shadow: 2px 0 8px;
+    background-color: antiquewhite;
+    align-items: center;
+}
+
+.logo
+{
+    padding: 5px;
+    padding-left: 70px;
+}
+
+.menu{
+    cursor: pointer;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.line1,.line2,.line3
+{
+    display: flex;
+    justify-content: space-around;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: forestgreen;
+}
+
+.line1:hover{
+    border-bottom: 1px solid rgb(164, 156, 156);
+}
+
+.line2:hover{
+    border-bottom: 1px solid rgb(164, 156, 156);
+}
+.line3:hover{
+    border-bottom: 1px solid rgb(164, 156, 156);
+}
+
+.main
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin: 30px;
+}
+
+.dish img
+{
+    border-radius: 500px;
+    box-shadow: 5px 5px 8px 2px;
+}
+
+.tag
+{
+    background-color: rgb(80, 158, 63);
+    color: aliceblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: fit-content;
+}
+
+.tag p
+{
+    padding: 7px;
+    font-size: 20px;
+}
+
+.heading
+{
+    margin-top: -35px;
+    font-size: 35px;
+}
+
+.para
+{
+    margin-top: -35px;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button
+{
+    width: fit-content;
+}
+
+button
+{
+    background-color: rgb(207, 156, 89);
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+
+.card
+{
+    margin-top: 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom:1px solid rgb(109, 95, 95) ;
+}
+
+.container1,.container2,.container3
+{
+    gap: 10px;
+    width: 330px;
+    display: flex;
+}
+
+.card h1
+{
+    font-size:18px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.card p
+{
+    margin-top: -10px;
+    padding-right: 25px;
+    font-size: 18px;
+    color: rgb(88, 82, 82);
+}
+
+.container1:hover
+{
+    box-shadow: 0px 0px 20px 10px rgb(116, 103, 103);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container2:hover
+{
+    box-shadow: 0px 0px 20px 10px rgb(116, 103, 103);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.container3:hover
+{
+    box-shadow: 0px 0px 20px 10px rgb(116, 103, 103);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pics
+{
+    width: 90vw;
+    text-align: center;
+    padding: 5vw;
+}
+
+.picsgrid
+{
+    display: grid;
+    gap: 10px;
+    grid-template-areas: 
+    "A A B C"
+    "A A B G"
+    "D E F G";
+}
+
+.picsgrid img
+{
+    border-radius: 10px;
+  transition: 0.2s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.picsgrid img:hover
+{
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+    box-shadow: 0px 0px 20px 10px rgb(116, 103, 103);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.grid1
+{
+    grid-area: A;
+}
+
+.grid2
+{
+    grid-area: B;
+}
+
+.grid3
+{
+    grid-area: C;
+}
+.grid4
+{
+    grid-area: D;
+}
+.grid5
+{
+    grid-area: E;
+}
+.grid6
+{
+    grid-area: F;
+}
+.grid7
+{
+    grid-area: G;
+}
+
+.bottomnav
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(114, 85, 85);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.signin
+{
+    height: 100vh;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    background-image: url(picture/1\ \(9\).jpg);
+    display: flex;
+    justify-content: center;
+}
+
+.signin .container
+{
+    box-shadow: 12px 12px 15px inset;
+    height: 300px;
+    margin-top: 10%;
+    background-color: rgb(29, 29, 65);
+    padding: 20px 40px;
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px black;
+}
+
+.signin h1
+{
+    text-align: center;
+}
+
+.signin .box
+{
+    height:20px;
+    display: block;
+    position: relative;
+    margin: 20px 0px 40px;
+    width: 250px;
+}
+
+.signin input
+{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.signin input:focus
+{
+    outline: 0;
+}
+
+.signin button
+{
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 35px;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(162, 162, 202);
+    border: none;
+    padding: 5px;
+}
+
+.signin button:active
+{
+    transform: scale(0.9);
+}
+
+.signin label
+{
+    position: absolute;
+    top: 10px;
+}
+
+.signin span
+{
+    display: inline-block;
+    font-size: 18px;
+    transition: 0.3s all;
+}
+
+.signin .box input:focus+label span
+{
+    color: rgb(130, 179, 197);
+    transform: translateY(-25px);
+}
+

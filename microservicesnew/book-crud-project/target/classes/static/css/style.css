@@ -1,0 +1,577 @@
+*
+{
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    overflow-x: hidden;
+}
+
+/********Header**********/
+
+
+.nav
+{
+    height: 10vh;
+    position: sticky;
+    width: 100%;
+    background-color:rgb(4, 4, 4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 10px white;
+}
+
+.nav ul 
+{
+    margin-right: 4vw;
+}
+
+.nav ul li
+{
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 4vw;
+}
+
+.logo
+{
+    height: 35px;
+    width: 35px;
+    margin: 12px 0px;
+    padding-bottom: 4px;
+}
+
+.tag
+{
+    opacity: 0.7;
+    cursor: pointer;
+    margin-left: 6vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: aliceblue;
+}
+
+.logo:hover
+{
+    border-bottom: 1px solid rgb(164, 156, 156);
+}
+
+/********Header End**********/
+
+/********Front Start**********/
+
+.front
+{
+    gap: 10px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(picture/1\ \(4\).jpg);
+    box-shadow: 5px 5px 8px rgb(11, 10, 10);
+}
+
+.search
+{
+    width: 30%;
+    font-size: 25px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 0.1px solid black;
+    background-color: transparent;
+    box-shadow: 0px 0px 20px inset;
+    cursor: pointer;
+    outline: none;
+    color: aliceblue;
+    font-weight: lighter;
+}
+
+
+
+.btn
+{
+    color: rgb(211, 202, 190);
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: transparent;
+    box-shadow: 0px 0px 10px inset;
+    cursor: pointer;
+    transition: transform 0.2s ease-in;
+}
+
+.btn:active
+{
+    transform: scale(0.7);
+}
+
+/********Front End**********/
+
+/********Gallary Start**********/
+
+#gallary
+{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.gallary
+{
+    margin-bottom: 2px;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-top: 2px;
+    background-color: #21130d;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active
+{
+    transform: translateY(120vh);
+    opacity: 0;
+}
+
+
+.box
+{
+    transition: all 1s ease-in-out;
+    padding-bottom: 30px;
+    gap: 10px;
+    width: 90vw;
+    height: 90vh;
+    display: grid;
+    grid-template-areas: 
+    "A C E"
+    "A D F"
+    "B D G";
+}
+
+.pic1
+{
+    height: 400px;
+    width: 300px;
+    grid-area: A;
+}
+
+.pic2
+{
+    height: 200px;
+    width: 300px;
+    grid-area: B;
+}
+
+.pic3
+{
+    height: 200px;
+    width: 300px;
+    grid-area: C;
+}
+
+.pic4
+{
+    margin-top: 10px;
+    height: 400px;
+    width: 300px;
+    grid-area: D;
+}
+
+.pic5
+{
+    grid-area: E;
+    height: 200px;
+    width: 300px;
+}
+
+.pic6
+{
+    height: 200px;
+    width: 300px;
+    grid-area: F;
+}
+
+.pic7
+{
+    height: 200px;
+    width: 300px;
+    grid-area:G ;
+}
+
+.pic01
+{
+    height: 100%;
+    width: 100%;
+}
+
+.pic02
+{
+    height: 100%;
+    width: 100%;
+}
+
+.border
+{
+    cursor: pointer;
+    overflow: hidden;
+    border-radius:20px;
+    box-shadow: 2px 2px 10px white;
+    animation: animate 2s infinite;
+}
+
+
+/********Gallary End**********/
+
+/********About Start**********/
+
+
+.removephoto
+{
+    transform: translateX(-120vh);
+    opacity: 0;
+}
+
+
+.removeinfo
+{
+    transform: translateX(120vh);
+    opacity: 0;
+}
+
+
+.about
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bg
+{
+    position: relative;
+    background-image: url(picture/1\ \(8\).jpg);
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(6px);
+}
+
+.mainnn
+{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 50%;
+    margin-right: 50vw;
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    box-shadow: 0px 0px 30px white;
+    transition: all 2s ease-in-out;
+}
+
+
+.mainpic
+{
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 400px;
+    width: 400px;
+    background-color: black;
+    overflow: hidden;
+}
+
+.mainpic::before
+{
+    content: '';
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    background-image:conic-gradient(transparent,transparent,transparent,#00ccff) ;
+    animation: ani 6s linear infinite;
+}
+
+.mainpic::after
+{
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-image:conic-gradient(transparent,transparent,transparent,#ff00f2) ;
+    animation: ani 4s linear infinite;
+    animation-delay: -1s;
+}
+
+@keyframes ani 
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+.about img
+{
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 100;
+    height: 390px;
+    width: 390px;
+}
+
+.info 
+{
+transition: all 2s ease-in-out;
+ width: 600px;
+ position: absolute;
+ margin-left: 55%;
+ margin-top: -10%;
+}
+
+.info h4
+{
+    font-size: 60px;
+    font-weight: bolder;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: transparent;
+    -webkit-text-stroke: 0.1vw rgb(231, 220, 225);
+    text-shadow: 8px 8px 15px black;
+}
+
+.info h4::before
+{
+    content: "Shubham Vishwakarma";
+    position: absolute;
+    width: 0;
+    color: tomato;
+    border-right: 0.5px solid tomato;
+    overflow: hidden;
+    animation: textt 6s linear infinite;
+}
+
+@keyframes textt 
+{
+    0%,10%,100%
+    {
+        width: 0;
+    }
+    70%
+    {
+        width: 65%;
+    }
+}
+
+.about .para
+{
+    transition: all 2s ease-in-out;
+    position: absolute;
+    width: 650px;
+    margin-left: 45%;
+    margin-top: 15%;
+}
+
+.para p
+{
+    text-align: center;
+    font-size: 30px;
+    color: coral;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-text-stroke: 0.05vw white;
+    text-shadow: 8px 8px 15px black;
+}
+
+
+.signin
+{
+    height: 100vh;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    background-image: url(picture/1\ \(9\).jpg);
+    display: flex;
+    justify-content: center;
+}
+
+.signin .container
+{
+    box-shadow: 12px 12px 15px inset;
+    height: 300px;
+    margin-top: 10%;
+    background-color: rgb(29, 29, 65);
+    padding: 20px 40px;
+    color: aliceblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px black;
+}
+
+.signin h1
+{
+    text-align: center;
+}
+
+.signin .box
+{
+    height:20px;
+    display: block;
+    position: relative;
+    margin: 20px 0px 40px;
+    width: 250px;
+}
+
+.signin input
+{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.signin input:focus
+{
+    outline: 0;
+}
+
+.signin button
+{
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 35px;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(162, 162, 202);
+    border: none;
+    padding: 5px;
+}
+
+.signin button:active
+{
+    transform: scale(0.9);
+}
+
+.signin label
+{
+    position: absolute;
+    top: 10px;
+}
+
+.signin span
+{
+    display: inline-block;
+    font-size: 18px;
+    transition: 0.3s all;
+}
+
+.signin .box input:focus+label span
+{
+    color: rgb(130, 179, 197);
+    transform: translateY(-25px);
+}
+
+.contact
+{
+    background-color: rgb(114, 85, 85);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contact .boxx
+{
+    justify-content: space-around;
+    padding-top: 50px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    height: 400px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.boxx img
+{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.boxx h2
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color:white;
+}
+
+.boxx p
+{
+    margin-top: -50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color:white;
+}
+
+.boxx button
+{
+    cursor: pointer;
+    margin-top: -25px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none; 
+    font-size: 20px;
+    padding: 10px;
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.boxx button:active
+{
+    transform: scale(0.7,0.7);
+}
+
+.bottomnav
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(114, 85, 85);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}

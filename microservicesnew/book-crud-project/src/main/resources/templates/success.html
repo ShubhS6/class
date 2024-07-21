@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<!-- <h2 align=center style="color:blue"> Book Application</h2>
+
+<div align="center" >
+<a href="/add">Add new Book</a> &nbsp;&nbsp;&nbsp;
+<a href="/view">View All Books</a>&nbsp;&nbsp;&nbsp;
+<a href="/delete">Delete Book</a>&nbsp;&nbsp;&nbsp;
+<a href="/search">Search Book</a>&nbsp;&nbsp;&nbsp;
+<a href="/logout">Logout</a>
+</div>
+-->
+
+<div class="nav">
+        <h4 class="tag">DARK</h4>
+        <ul>
+            <li><img src="logo/house.png" alt="" class="logo"></li>
+            <li><a href="#gallary"><img src="logo/picture.png" alt="" class="logo"></a></li>
+            <li><a href="#about"><img src="logo/about.png" alt="" class="logo"></a></li>
+            <li><a href="#signin"><img src="logo/add-friend.png" alt="" class="logo"></a></li>
+            <li><a href="#contact"><img src="logo/chatbot.png" alt="" class="logo"></a></li>
+        </ul>
+    </div>
+    <div class="front">
+        <input type="text" placeholder="write gallary,about,contact,signin" class="search" id="search">
+        <button class="btn" id="btn">Search</button>
+    </div>
+    <div class="gallary" id="gallary">
+        <div class="box" id="gallarybox">
+        <div class="pic1 border">
+            <img src="picture/1.jpg" alt="" class="pic01">
+        </div>
+        <div class="pic2 border">
+            <img src="picture/2.jpg" alt="" class="pic02">
+        </div>
+        <div class="pic3 border">
+            <img src="picture/3.jpg" alt="" class="pic02">
+        </div>
+        <div class="pic4 border">
+            <img src="picture/4.jpg" alt="" class="pic01">
+        </div>
+        <div class="pic5 border">
+            <img src="picture/5.jpg" alt="" class="pic02">
+        </div>
+        <div class="pic6 border">
+            <img src="picture/6.jpg" alt="" class="pic02">
+        </div>
+        <div class="pic7 border">
+            <img src="picture/7.jpg" alt="" class="pic02">
+        </div>
+        </div>
+    </div>
+    <div class="about" id="about">
+        <div class="bg"></div>
+        <div class="mainnn" id="mainnn">
+        <div class="mainpic">
+            <img src="picture/mainpic.jpg" alt="">
+            <div class="water"></div>
+        </div>
+        </div>
+        <div class="info" id="info">
+            <h4>Shubham Vishwakarma</h4>
+        </div>
+        <div class="para" id="para">
+            <p>I am a Front End Developer and currently building myself always keen to know how the things work and i love reading cse subject and my favorite subject are computer Network And Computer Organization and Architecture.</p>
+        </div>
+    </div>
+    <div class="signin" id="signin">
+        <div class="container">
+            <h1>Please Login</h1>
+        <form>
+            <div class="box">
+                <input type="email">
+                <label>Email</label>
+            </div>
+            <div class="box">
+                <input type="password">
+                <label>Password</label>
+            </div>
+            <button>Login</button>
+        </form>
+        </div>
+    </div>
+    <div class="contact" id="contact">
+            <div class="boxx">
+                <img src="picture/1.jpg" alt="">
+                <h2>Nitish Kumar</h2>
+                <p>Java Developer</p>
+                <button>Know More</button>
+            </div>
+            <div class="boxx">
+                <img src="picture/1.jpg" alt="">
+                <h2>Brijesh Yadav</h2>
+                <p>Web Developer</p>
+                <button>Know More</button>
+            </div>
+            <div class="boxx">
+                <img src="picture/1.jpg" alt="">
+                <h2>Abhishek Singh</h2>
+                <p>Blockchain Developer</p>
+                <button>Know More</button>
+            </div>
+    </div>
+    <div class="bottomnav">
+        <h2>@CreatedBy- Shubham Vishwakarma</h2>
+    </div>
+    <script src="" th:src="@{javascript/script.js}"></script>
+</body>
+</html>
