@@ -304,3 +304,325 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include "ns3/core-module.h"
+
+#include "ns3/network-module.h"
+
+#include "ns3/internet-module.h"
+
+#include "ns3/point-to-point-module.h"
+
+#include "ns3/applications-module.h"
+
+#include "ns3/udp-socket-factory.h"
+
+#include "ns3/log.h"
+ 
+using namespace ns3;
+ 
+NS_LOG_COMPONENT_DEFINE("IntegrityProtectionApplication");
+ 
+class IntegrityProtectionApplication : public Application {
+
+private:
+
+    Ptr<Socket> m_socket;   // Socket for communication
+
+    Address m_peerAddress;  // Peer address
+
+    uint16_t m_peerPort;    // Peer port
+ 
+protected:
+
+    virtual void StartApplication() override {
+
+        NS_LOG_INFO("Starting Integrity Protection Application");
+
+        m_socket = Socket::CreateSocket(GetNode(), UdpSocketFactory::GetTypeId());
+
+        m_socket->Bind();
+
+        m_socket->Connect(InetSocketAddress(Ipv4Address::ConvertFrom(m_peerAddress), m_peerPort));
+
+        Simulator::Schedule(Seconds(1.0), &IntegrityProtectionApplication::SendPacket, this);
+
+    }
+ 
+    virtual void StopApplication() override {
+
+        NS_LOG_INFO("Stopping Integrity Protection Application");
+
+        if (m_socket) {
+
+            m_socket->Close();
+
+            m_socket = 0;
+
+        }
+
+    }
+ 
+    void SendPacket() {
+
+        NS_LOG_INFO("Sending packet with integrity protection");
+
+        std::string data = "Hello, this is a test packet!";
+
+        Ptr<Packet> packet = Create<Packet>((uint8_t*)data.c_str(), data.length());
+ 
+        // Simulate integrity protection by appending a hash
+
+        uint32_t hash = GenerateHash(data);
+
+        packet->AddPaddingAtEnd(4);  // Add space for the hash
+
+        packet->WriteUint32AtEnd(hash);
+ 
+        m_socket->Send(packet);
+
+    }
+ 
+    uint32_t GenerateHash(const std::string &data) {
+
+        // Simple hash function for demonstration
+
+        uint32_t hash = 0;
+
+        for(char c : data) {
+
+            hash = 5 * hash + c;
+
+        }
+
+        return hash;
+
+    }
+ 
+public:
+
+    IntegrityProtectionApplication() : m_peerPort(0) {}
+ 
+    void Setup(Address address, uint16_t port) {
+
+        m_peerAddress = address;
+
+        m_peerPort = port;
+
+    }
+
+};
+ 
+int main(int argc, char *argv[]) {
+
+    CommandLine cmd;
+
+    cmd.Parse(argc, argv);
+ 
+    NodeContainer nodes;
+
+    nodes.Create(2);
+ 
+    PointToPointHelper p2p;
+
+    p2p.SetDeviceAttribute("DataRate", StringValue("5Mbps"));
+
+    p2p.SetChannelAttribute("Delay", StringValue("2ms"));
+ 
+    NetDeviceContainer devices = p2p.Install(nodes);
+
+    InternetStackHelper stack;
+
+    stack.Install(nodes);
+ 
+    Ipv4AddressHelper address;
+
+    address.SetBase("10.1.1.0", "255.255.255.0");
+
+    Ipv4InterfaceContainer interfaces = address.Assign(devices);
+ 
+    uint16_t port = 9;
+
+    Ptr<IntegrityProtectionApplication> app = CreateObject<IntegrityProtectionApplication>();
+
+    app->Setup(interfaces.GetAddress(1), port);
+
+    nodes.Get(0)->AddApplication(app);
+
+    app->SetStartTime(Seconds(1.0));
+
+    app->SetStopTime(Seconds(10.0));
+ 
+    Simulator::Run();
+
+    Simulator::Destroy();
+ 
+    return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include "ns3/core-module.h"
+
+#include "ns3/network-module.h"
+
+#include "ns3/internet-module.h"
+
+#include "ns3/point-to-point-module.h"
+
+#include "ns3/applications-module.h"
+
+#include "ns3/udp-socket-factory.h"
+
+#include "ns3/log.h"
+ 
+using namespace ns3;
+ 
+NS_LOG_COMPONENT_DEFINE("PdcpCipheringApplication");
+ 
+class PdcpCipheringApplication : public Application {
+
+private:
+
+    Ptr<Socket> m_socket;   // Socket for communication
+
+    Address m_peerAddress;  // Peer address
+
+    uint16_t m_peerPort;    // Peer port
+ 
+protected:
+
+    virtual void StartApplication() override {
+
+        NS_LOG_INFO("Starting PDCP Ciphering Application");
+
+        m_socket = Socket::CreateSocket(GetNode(), UdpSocketFactory::GetTypeId());
+
+        m_socket->Bind();
+
+        m_socket->Connect(InetSocketAddress(Ipv4Address::ConvertFrom(m_peerAddress), m_peerPort));
+
+        Simulator::Schedule(Seconds(1.0), &PdcpCipheringApplication::SendPacket, this);
+
+    }
+ 
+    virtual void StopApplication() override {
+
+        NS_LOG_INFO("Stopping PDCP Ciphering Application");
+
+        if (m_socket) {
+
+            m_socket->Close();
+
+            m_socket = 0;
+
+        }
+
+    }
+ 
+    void SendPacket() {
+
+        NS_LOG_INFO("Sending packet");
+
+        Ptr<Packet> packet = Create<Packet>(1024);  // Create a packet of 1024 bytes
+
+        m_socket->Send(packet);
+
+    }
+ 
+public:
+
+    PdcpCipheringApplication() : m_peerPort(0) {}
+ 
+    void Setup(Address address, uint16_t port) {
+
+        m_peerAddress = address;
+
+        m_peerPort = port;
+
+    }
+
+};
+ 
+int main(int argc, char *argv[]) {
+
+    CommandLine cmd;
+
+    cmd.Parse(argc, argv);
+ 
+    NodeContainer nodes;
+
+    nodes.Create(2);
+ 
+    PointToPointHelper p2p;
+
+    p2p.SetDeviceAttribute("DataRate", StringValue("5Mbps"));
+
+    p2p.SetChannelAttribute("Delay", StringValue("2ms"));
+ 
+    NetDeviceContainer devices = p2p.Install(nodes);
+
+    InternetStackHelper stack;
+
+    stack.Install(nodes);
+ 
+    Ipv4AddressHelper address;
+
+    address.SetBase("10.1.1.0", "255.255.255.0");
+
+    Ipv4InterfaceContainer interfaces = address.Assign(devices);
+ 
+    uint16_t port = 9;
+
+    Ptr<PdcpCipheringApplication> pdcpApp = CreateObject<PdcpCipheringApplication>();
+
+    pdcpApp->Setup(interfaces.GetAddress(1), port);
+
+    nodes.Get(0)->AddApplication(pdcpApp);
+
+    pdcpApp->SetStartTime(Seconds(1.0));
+
+    pdcpApp->SetStopTime(Seconds(10.0));
+ 
+    Simulator::Run();
+
+    Simulator::Destroy();
+ 
+    return 0;
+
+}
+
