@@ -1,0 +1,37 @@
+Assignment on PDCP layer
+
+sequence number
+header Compression
+integrity Protection
+ciphering
+
+
+it is based on Rohc it is protocol to compress the header
+ip packet is of size 40 byte dont consider much usefull
+
+#include <iostream>
+
+class PDCP {
+private:
+    int sequenceNumber;  // Sequence number counter
+
+public:
+    PDCP() : sequenceNumber(0) {}  // Constructor to initialize sequence number
+    
+    // Method to get the next sequence number
+    int getNextSequenceNumber() {
+        return sequenceNumber++;
+    }
+};
+
+int main() {
+    PDCP pdcpInstance;
+
+    // Simulate sending packets with sequence numbers
+    for (int i = 0; i < 5; ++i) {
+        int sequenceNumber = pdcpInstance.getNextSequenceNumber();
+        std::cout << "Sending packet with sequence number: " << sequenceNumber << std::endl;
+    }
+
+    return 0;
+}
