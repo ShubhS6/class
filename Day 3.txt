@@ -35,3 +35,89 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[11:51 AM] Abhijeet kumar
+#include <iostream>
+
+#include <vector>
+
+#include <cstdint>
+ 
+class PDCP_Session {
+
+private:
+
+    uint32_t TX_NEXT = 0;  // Next transmitting sequence number
+
+    uint32_t RX_NEXT = 0;  // Next expected receiving sequence number
+ 
+public:
+
+    // Simulate sending a PDCP packet
+
+    void send_packet() {
+
+        std::cout << "Sending packet with SN: " << TX_NEXT << std::endl;
+
+        TX_NEXT = (TX_NEXT + 1) % 4096;  // Assume 12-bit SN for example
+
+    }
+ 
+    // Simulate receiving a PDCP packet
+
+    void receive_packet(uint32_t sn) {
+
+        if (sn == RX_NEXT) {
+
+            std::cout << "Received packet with SN: " << sn << " successfully.\n";
+
+            RX_NEXT = (RX_NEXT + 1) % 4096;  // Update the expected SN
+
+        } else {
+
+            std::cout << "Error: Received packet with SN: " << sn << ", expected SN: " << RX_NEXT << std::endl;
+
+            // Handle error: could involve sequence number correction, retransmission requests, etc.
+
+        }
+
+    }
+
+};
+ 
+int main() {
+
+    PDCP_Session session;
+ 
+    // Simulating a normal sequence
+
+    session.send_packet();
+
+    session.receive_packet(0);  // Correct sequence
+ 
+    session.send_packet();
+
+    session.receive_packet(1);  // Correct sequence
+ 
+    // Introducing an error in sequence
+
+    session.send_packet();
+
+    session.receive_packet(3);  // Incorrect sequence
+ 
+    return 0;
+
+}
