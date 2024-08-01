@@ -1,3 +1,63 @@
+rpc message-id-"101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+
+<edit-config>
+
+<target>
+
+<running/>
+
+</target>
+
+<config>
+
+<native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+
+<interface>
+
+<Loopback>
+
+<name>4</name>
+
+<ip>
+
+<address>
+
+<primary>
+
+<address>14.1.1.1</address>
+
+<mask 255.255.255.0</mask>
+
+</primary>
+
+</address>
+
+</ip>
+
+</Loopback>
+
+</interface>
+
+</native>
+
+</config>
+
+</edit-config>
+
+</rpc>
+
+
+
+
+
+
+
+
+
+
+
+
+
 Assignment on PDCP layer
 
 sequence number
