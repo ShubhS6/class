@@ -1,3 +1,33 @@
+@PostMapping("/fetchMetrics")
+    public String fetchRouterMetrics(@RequestParam String ipAddress, @RequestParam String community, Model model) {
+        try {
+            // OID for CPU usage (this example is for a Cisco router)
+            String cpuUsageOid = "1.3.6.1.4.1.9.2.1.57.0";
+            String cpuUsage = snmpService.getAsString(cpuUsageOid, ipAddress, community);
+
+            // Create a new device with the fetched CPU usage (you can modify as needed)
+            Device device = new Device(ipAddress, cpuUsage, "Online");
+            
+            
+            model.addAttribute("cpuUsage", cpuUsage);
+            
+         // Optionally, update the device list (this example shows how to add the fetched device)
+            List<Device> devices = new ArrayList<>();
+            devices.add(device);
+            
+            // Add the updated device list to the model
+            model.addAttribute("devices", devices);
+            
+        } catch (Exception e) {
+            model.addAttribute("cpuUsage", "Error: " + e.getMessage());
+        }
+        return "index";
+    }
+
+
+
+
+
 rpc message-id-"101" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
 
 <edit-config>
