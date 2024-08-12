@@ -1,4 +1,49 @@
 @PostMapping("/fetchMetrics")
+public String fetchMetrics(@RequestParam String ipAddress, @RequestParam String community, @RequestParam String oid, Model model) {
+    try {
+        String memoryUsage = snmpService.getAsString(oid, ipAddress, community);
+        model.addAttribute("memoryUsage", memoryUsage);
+        Device device = new Device(ipAddress, memoryUsage, "Online");
+        model.addAttribute("memoryUsage", memoryUsage);
+        List<Device> devices = new ArrayList<>();
+        devices.add(device);
+        model.addAttribute("devices", devices);
+    } catch (Exception e) {
+        model.addAttribute("memoryUsage", "Error: " + e.getMessage());
+    }
+    return "index";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@PostMapping("/fetchMetrics")
     public String fetchRouterMetrics(@RequestParam String ipAddress, @RequestParam String community, Model model) {
         try {
             // OID for CPU usage (this example is for a Cisco router)
